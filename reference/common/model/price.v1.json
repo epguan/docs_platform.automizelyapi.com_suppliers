@@ -19,5 +19,6 @@
   },
   "x-tags": [
     "common"
-  ]
+  ],
+  "description": "price"
 }
