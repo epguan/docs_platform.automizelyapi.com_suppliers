@@ -26,68 +26,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "external_vendor_product_id": {
-                      "type": "string"
-                    },
-                    "universal_id": {
-                      "type": "string"
-                    },
-                    "supplier": {
-                      "$ref": "#/components/schemas/supplier"
-                    },
-                    "title": {
-                      "type": "string"
-                    },
-                    "body_html": {
-                      "type": "string"
-                    },
-                    "categories": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/category"
-                      }
-                    },
-                    "available_to_sell": {
-                      "type": "boolean",
-                      "description": "true of false, it will be false, say no stock, or manually mark it to false\ntrue:  describe if supplier can allow us refund\nfalse: describe if supplier can not allow us refund"
-                    },
-                    "accept_refund": {
-                      "type": "boolean"
-                    },
-                    "accept_returns": {
-                      "type":"boolean"
-                    },
-                    "brand": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        }
-                      }
-                    },
-                    "condition": {
-                      "type": "string"
-                    },
-                    "image_urls": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "format": "uri"
-                      }
-                    },
-                    "shipping_prices": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/shipping_price"
-                      }
-                    }
-                  }
-                }
+                  "$ref": "#/components/schemas/response-vendor-products"
+                },
+                "examples": {}
               }
             }
           }
@@ -96,6 +37,28 @@
         "tags": [
           "vendor-product"
         ]
+      }
+    },
+    "/v1/products": {
+      "post": {
+        "summary": "",
+        "operationId": "post-v1-products",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/response-vendor-products"
+                },
+                "examples": {
+                  "example-1": {}
+                }
+              }
+            }
+          }
+        },
+        "description": "The response as same as `platform.automizelyAPI.com/suppliers/v1/supplier/vendor-products` \nJust modify the price.\n\nAdd field :\n \"tags\":[],  \n \"keywords\":[],  "
       }
     }
   },
@@ -198,6 +161,7 @@
       "shipping_price": {
         "title": "shipping_prices",
         "type": "object",
+        "description": "shipping_prices",
         "properties": {
           "variant_ids": {
             "type": "string"
@@ -213,9 +177,108 @@
             "items": {
               "$ref": "#/components/schemas/shipping_option"
             }
+          },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "updated_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
           }
-        },
-        "description": "shipping_prices"
+        }
+      },
+      "option": {
+        "title": "option",
+        "type": "object",
+        "description": "options for products",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "response-vendor-products": {
+        "title": "response-vendor-products",
+        "type": "object",
+        "x-examples": {},
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "external_vendor_product_id": {
+            "type": "string"
+          },
+          "universal_id": {
+            "type": "string"
+          },
+          "supplier": {
+            "$ref": "#/components/schemas/supplier"
+          },
+          "title": {
+            "type": "string"
+          },
+          "body_html": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/category"
+            }
+          },
+          "available_to_sell": {
+            "type": "boolean",
+            "description": "true of false, it will be false, say no stock, or manually mark it to false\ntrue:  describe if supplier can allow us refund\nfalse: describe if supplier can not allow us refund"
+          },
+          "accept_refund": {
+            "type": "boolean"
+          },
+          "accept_returns": {
+            "type": "boolean"
+          },
+          "brand": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "condition": {
+            "type": "string"
+          },
+          "image_urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "shipping_prices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/shipping_price"
+            }
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/option"
+            }
+          },
+          "variants": {
+            "type": "array",
+            "items": {}
+          }
+        }
       }
     }
   }
