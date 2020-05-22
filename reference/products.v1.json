@@ -1,13 +1,13 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "supplier",
+    "title": "products",
     "version": "1.0",
     "contact": {
       "name": "coke",
       "email": "team-coke@aftership.com"
     },
-    "description": "supplier"
+    "description": "products"
   },
   "servers": [
     {
@@ -29,7 +29,7 @@
                   "type": "object",
                   "properties": {
                     "meta": {
-                      "$ref": "../common/model/meta.20000.v2.json"
+                      "$ref": "./common/model/meta.20000.v1.json"
                     },
                     "data": {
                       "type": "object",
@@ -37,7 +37,7 @@
                         "products": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/response.get.vendor.products"
+                            "$ref": "#/components/schemas/response.get.vendor-products"
                           }
                         },
                         "pagination": {
@@ -51,7 +51,7 @@
                   }
                 },
                 "examples": {
-                  "example": {
+                  "response-example": {
                     "value": {
                       "meta": {
                         "code": 20000,
@@ -199,33 +199,9 @@
             "schema": {
               "type": "string"
             },
-            "in": "query",
-            "name": "organization_id",
-            "description": ""
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
             "in": "header",
             "name": "am-api-key",
             "description": "Gateway api key"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "app_platform",
-            "description": "shopify ,wooc"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "app_key",
-            "description": ""
           },
           {
             "schema": {
@@ -241,6 +217,9 @@
             "in": "query",
             "name": "limit"
           }
+        ],
+        "tags": [
+          "Api"
         ]
       },
       "post": {
@@ -256,19 +235,149 @@
                   "type": "object",
                   "properties": {
                     "meta": {
-                      "$ref": "./common/model/meta.20000.v2.json"
+                      "$ref": "./common/model/meta.20000.v1.json"
                     },
                     "data": {
-                      "type": [
-                        "string",
-                        "object"
-                      ],
+                      "type": "object",
                       "properties": {
                         "product": {
                           "$ref": "#/components/schemas/response.get.vendor-products"
                         },
                         "parameter_string": {
                           "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "response-example": {
+                    "value": {
+                      "meta": {
+                        "code": 20000,
+                        "type": "OK",
+                        "message": "Everything worked as expected."
+                      },
+                      "data": {
+                        "product": {
+                          "id": "9eee699559924f9db48eced2ae239544",
+                          "external_vendor_product_id": "7445458",
+                          "universal_id": "8eee699559924f9db48eced2ae239iii",
+                          "supplier": {
+                            "id": "uuid",
+                            "name": "Eprolo",
+                            "code": "eprolo"
+                          },
+                          "title": "Tea Cup 100x",
+                          "body_html": "The best new cpu<br />New Product",
+                          "categories": [
+                            {
+                              "id": "kiuee699559924f9db48eced2ae23987h",
+                              "name": "Fashion",
+                              "code": "fashion"
+                            }
+                          ],
+                          "available_to_sell": true,
+                          "accept_refund": true,
+                          "accept_returns": true,
+                          "brand": {
+                            "name": "Lego"
+                          },
+                          "condition": "new",
+                          "image_urls": [
+                            "https://www.am-static.com/supplier/images/xxxxx"
+                          ],
+                          "shipping_prices": [
+                            {
+                              "variant_ids": [
+                                "9eee699559924f9db48eced2ae2395c3"
+                              ],
+                              "external_ecommerce_variant_ids": [
+                                "544454"
+                              ],
+                              "shipping_options": [
+                                {
+                                  "external_option_id": "879923",
+                                  "shipping_method": "ePacket",
+                                  "country": "ALA",
+                                  "shipping_time_sla": "2 - 3 Business days",
+                                  "price": [
+                                    {
+                                      "unit": 1,
+                                      "amount": 4,
+                                      "currency": "USD"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "metrics": {
+                                "updated_at": "2019-11-06T02:54:27+00:00"
+                              }
+                            }
+                          ],
+                          "options": [
+                            {
+                              "name": "Color",
+                              "values": [
+                                "Black",
+                                "Greep",
+                                "Red"
+                              ]
+                            },
+                            {
+                              "name": "length",
+                              "values": [
+                                "2m",
+                                "3m"
+                              ]
+                            }
+                          ],
+                          "variants": [
+                            {
+                              "id": "9eee699559924f9db48eced2ae2395c3",
+                              "universal_id": "8eee699559924f9db48eced2ae239iii",
+                              "external_vendor_variant_id": "544454",
+                              "sku": "198762889",
+                              "upc": "",
+                              "ean": "",
+                              "mpn": "",
+                              "model": "VC74LI",
+                              "title": "Tea Cup 100x Green",
+                              "available_quantity": 12,
+                              "warehouse": {
+                                "country": "HKG"
+                              },
+                              "price": {
+                                "amount": 100,
+                                "currency": "USD"
+                              },
+                              "unit": "1 pcs",
+                              "weight": {
+                                "unit": "kg",
+                                "value": 120
+                              },
+                              "image_urls": [
+                                "http://wordpress-5.2-dev.aftershipdemo.com/wp-content/uploads/2019/05/56a2e3a78357ccde678f88bebfffdd7b.jpg"
+                              ],
+                              "sort": 1,
+                              "options": [
+                                {
+                                  "name": "Color",
+                                  "value": "Black"
+                                },
+                                {
+                                  "name": "length",
+                                  "value": "2m"
+                                }
+                              ]
+                            }
+                          ],
+                          "metrics": {
+                            "updated_at": "2019-11-06T02:54:27+00:00",
+                            "created_at": "2019-11-06T02:52:27+00:00"
+                          },
+                          "updated_at": "2019-11-06T02:54:27+00:00",
+                          "created_at": "2019-11-06T02:52:27+00:00"
                         }
                       }
                     }
@@ -282,12 +391,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/request.put.vendor-product"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/request.product"
+                "$ref": "#/components/schemas/request.post.vendor-product"
               }
             }
           },
@@ -300,7 +404,7 @@
     },
     "/v1/products/{id}": {
       "patch": {
-        "summary": "",
+        "summary": "PATCH  /v1/products/{id}",
         "operationId": "patch-v1-products",
         "responses": {
           "200": {
@@ -311,7 +415,7 @@
                   "type": "object",
                   "properties": {
                     "meta": {
-                      "$ref": "./common/model/meta.20000.v2.json"
+                      "$ref": "./common/model/meta.20000.v1.json"
                     },
                     "data": {
                       "type": "object",
@@ -321,16 +425,13 @@
                         },
                         "pagination": {
                           "$ref": "./common/model/pagination.v1.json"
-                        },
-                        "parameter_string": {
-                          "type": "string"
                         }
                       }
                     }
                   }
                 },
                 "examples": {
-                  "example": {
+                  "response-example": {
                     "value": {
                       "meta": {
                         "code": 20000,
@@ -475,7 +576,22 @@
             }
           }
         },
-        "description": ""
+        "description": "",
+        "tags": [
+          "Api"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/request.patch.products"
+              },
+              "examples": {
+                "example": {}
+              }
+            }
+          }
+        }
       },
       "parameters": [
         {
@@ -490,7 +606,7 @@
     },
     "/v1/products": {
       "get": {
-        "summary": "",
+        "summary": "GET /v1/products",
         "operationId": "get-v1-products",
         "responses": {
           "200": {
@@ -501,7 +617,7 @@
                   "type": "object",
                   "properties": {
                     "meta": {
-                      "$ref": "./common/model/meta.20000.v2.json"
+                      "$ref": "./common/model/meta.20000.v1.json"
                     },
                     "data": {
                       "type": "object",
@@ -520,7 +636,7 @@
                   }
                 },
                 "examples": {
-                  "example": {
+                  "response-example": {
                     "value": {
                       "meta": {
                         "code": 20000,
@@ -704,15 +820,181 @@
             "name": "am-api-key",
             "description": "Gateway api key"
           }
-        ],
-        "description": ""
+        ]
       },
       "post": {
-        "summary": "",
+        "summary": "POST /v1/products",
         "operationId": "post-v1-products",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "common/model/meta.20000.v1.json"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "product": {
+                          "$ref": "#/components/schemas/response.get.vendor-products"
+                        },
+                        "parameter_string": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "response-example": {
+                    "value": {
+                      "meta": {
+                        "code": 20000,
+                        "type": "OK",
+                        "message": "Everything worked as expected."
+                      },
+                      "data": {
+                        "product": {
+                          "id": "9eee699559924f9db48eced2ae239544",
+                          "external_vendor_product_id": "7445458",
+                          "universal_id": "8eee699559924f9db48eced2ae239iii",
+                          "supplier": {
+                            "id": "uuid",
+                            "name": "Eprolo",
+                            "code": "eprolo"
+                          },
+                          "title": "Tea Cup 100x",
+                          "body_html": "The best new cpu<br />New Product",
+                          "categories": [
+                            {
+                              "id": "kiuee699559924f9db48eced2ae23987h",
+                              "name": "Fashion",
+                              "code": "fashion"
+                            }
+                          ],
+                          "tags": [],
+                          "keywords": [],
+                          "available_to_sell": true,
+                          "accept_refund": true,
+                          "accept_returns": true,
+                          "brand": {
+                            "name": "Lego"
+                          },
+                          "condition": "new",
+                          "image_urls": [
+                            "https://www.am-static.com/supplier/images/xxxxx"
+                          ],
+                          "shipping_prices": [
+                            {
+                              "variant_ids": [
+                                "9eee699559924f9db48eced2ae2395c3"
+                              ],
+                              "external_ecommerce_variant_ids": [
+                                "544454"
+                              ],
+                              "shipping_options": [
+                                {
+                                  "external_option_id": "879923",
+                                  "shipping_method": "ePacket",
+                                  "country": "ALA",
+                                  "shipping_time_sla": "2 - 3 Business days",
+                                  "price": [
+                                    {
+                                      "unit": 1,
+                                      "amount": 4,
+                                      "currency": "USD"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "metrics": {
+                                "updated_at": "2019-11-06T02:54:27+00:00"
+                              }
+                            }
+                          ],
+                          "options": [
+                            {
+                              "name": "Color",
+                              "values": [
+                                "Black",
+                                "Greep",
+                                "Red"
+                              ]
+                            },
+                            {
+                              "name": "length",
+                              "values": [
+                                "2m",
+                                "3m"
+                              ]
+                            }
+                          ],
+                          "variants": [
+                            {
+                              "id": "9eee699559924f9db48eced2ae2395c3",
+                              "universal_id": "8eee699559924f9db48eced2ae239iii",
+                              "external_vendor_variant_id": "544454",
+                              "sku": "198762889",
+                              "upc": "",
+                              "ean": "",
+                              "mpn": "",
+                              "model": "VC74LI",
+                              "title": "Tea Cup 100x Green",
+                              "available_quantity": 12,
+                              "warehouse": {
+                                "country": "HKG"
+                              },
+                              "price": {
+                                "amount": 100,
+                                "currency": "USD"
+                              },
+                              "unit": "1 pcs",
+                              "weight": {
+                                "unit": "kg",
+                                "value": 120
+                              },
+                              "image_urls": [
+                                "http://wordpress-5.2-dev.aftershipdemo.com/wp-content/uploads/2019/05/56a2e3a78357ccde678f88bebfffdd7b.jpg"
+                              ],
+                              "sort": 1,
+                              "options": [
+                                {
+                                  "name": "Color",
+                                  "value": "Black"
+                                },
+                                {
+                                  "name": "length",
+                                  "value": "2m"
+                                }
+                              ]
+                            }
+                          ],
+                          "metrics": {
+                            "updated_at": "2019-11-06T02:54:27+00:00",
+                            "created_at": "2019-11-06T02:52:27+00:00"
+                          },
+                          "updated_at": "2019-11-06T02:54:27+00:00",
+                          "created_at": "2019-11-06T02:52:27+00:00"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/request.post.products"
+              }
+            }
           }
         }
       }
@@ -765,9 +1047,7 @@
           }
         },
         "description": "category",
-        "x-tags": [
-          "suppliers"
-        ]
+        "x-tags": []
       },
       "shipping_option": {
         "title": "shipping_option",
@@ -788,9 +1068,7 @@
           }
         },
         "description": "shipping_option",
-        "x-tags": [
-          "suppliers"
-        ],
+        "x-tags": [],
         "properties": {
           "external_option_id": {
             "type": "string",
@@ -809,7 +1087,7 @@
           "price": {
             "type": "array",
             "items": {
-              "$ref": "../common/model/price.v1.json"
+              "$ref": "./common/model/price.v1.json"
             }
           }
         }
@@ -858,6 +1136,472 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "request.patch.products": {
+        "title": "request.patch.products",
+        "type": "object",
+        "x-examples": {
+          "example": {
+            "external_vendor_product_id": "7445458",
+            "universal_id": "8eee699559924f9db48eced2ae239iii",
+            "supplier": {
+              "name": "Eprolo",
+              "code": "eprolo"
+            },
+            "title": "Tea Cup 100x",
+            "body_html": "The best new cpu<br />New Product",
+            "categories": [
+              {
+                "name": "Fashion",
+                "code": "fashion"
+              }
+            ],
+            "available_to_sell": true,
+            "accept_refund": true,
+            "accept_returns": true,
+            "brand": {
+              "name": "Lego"
+            },
+            "condition": "new",
+            "image_urls": [
+              "https://www.am-static.com/supplier/images/xxxxx"
+            ],
+            "shipping_prices": [
+              {
+                "variant_ids": [
+                  "9eee699559924f9db48eced2ae2395c3"
+                ],
+                "external_ecommerce_variant_ids": [
+                  "544454"
+                ],
+                "shipping_options": [
+                  {
+                    "external_option_id": "879923",
+                    "shipping_method": "ePacket",
+                    "country": "ALA",
+                    "shipping_time_sla": "2 - 3 Business days",
+                    "price": [
+                      {
+                        "unit": 1,
+                        "amount": 4,
+                        "currency": "USD"
+                      }
+                    ]
+                  }
+                ],
+                "metrics": {
+                  "updated_at": "2019-11-06T02:54:27+00:00"
+                }
+              }
+            ],
+            "options": [
+              {
+                "name": "Color",
+                "values": [
+                  "Black",
+                  "Greep",
+                  "Red"
+                ]
+              },
+              {
+                "name": "length",
+                "values": [
+                  "2m",
+                  "3m"
+                ]
+              }
+            ],
+            "variants": [
+              {
+                "id": "9eee699559924f9db48eced2ae2395c3",
+                "universal_id": "8eee699559924f9db48eced2ae239iii",
+                "external_vendor_variant_id": "544454",
+                "sku": "198762889",
+                "upc": "",
+                "ean": "",
+                "mpn": "",
+                "model": "VC74LI",
+                "title": "Tea Cup 100x Green",
+                "available_quantity": 12,
+                "warehouse": {
+                  "country": "HKG"
+                },
+                "price": {
+                  "amount": 100,
+                  "currency": "USD"
+                },
+                "unit": "1 pcs",
+                "weight": {
+                  "unit": "kg",
+                  "value": 120
+                },
+                "image_urls": [
+                  "http://wordpress-5.2-dev.aftershipdemo.com/wp-content/uploads/2019/05/56a2e3a78357ccde678f88bebfffdd7b.jpg"
+                ],
+                "sort": 1,
+                "options": [
+                  {
+                    "name": "Color",
+                    "value": "Black"
+                  },
+                  {
+                    "name": "length",
+                    "value": "2m"
+                  }
+                ]
+              }
+            ],
+            "metrics": {
+              "updated_at": "2019-11-06T02:54:27+00:00",
+              "created_at": "2019-11-06T02:52:27+00:00"
+            }
+          }
+        },
+        "description": "",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "external_vendor_product_id": {
+            "type": "string",
+            "description": "supplier's product id"
+          },
+          "universal_id": {
+            "type": "string",
+            "description": "a uuid-v4 c的统一标识"
+          },
+          "supplier": {
+            "$ref": "#/components/schemas/response.supplier"
+          },
+          "title": {
+            "type": "string",
+            "description": ""
+          },
+          "body_html": {
+            "type": "string",
+            "description": "描述：支持多种格式（html, text）"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/category"
+            }
+          },
+          "available_to_sell": {
+            "type": "boolean",
+            "description": "true of false, it will be false, say no stock, or manually mark it to false\ntrue:  describe if supplier can allow us refund\nfalse: describe if supplier can not allow us refund"
+          },
+          "accept_refund": {
+            "type": "boolean"
+          },
+          "accept_returns": {
+            "type": "boolean"
+          },
+          "brand": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "condition": {
+            "type": "string",
+            "enum": [
+              "new",
+              "new_other",
+              "new_with_defects",
+              "refurbished",
+              "seller_refurbished",
+              "use_like_new",
+              "used_very_good",
+              "used_good",
+              "use_acceptable",
+              "open_box_good",
+              "open_box_acceptable",
+              "open_box_like_new"
+            ]
+          },
+          "image_urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "shipping_prices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/shipping_price"
+            }
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/option"
+            }
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/request.variant"
+            }
+          },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "updated_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "request.post.products": {
+        "title": "request.post.products",
+        "type": "object",
+        "x-examples": {
+          "example": {
+            "external_vendor_product_id": "7445458",
+            "universal_id": "8eee699559924f9db48eced2ae239iii",
+            "supplier": {
+              "id": "uuid",
+              "name": "Eprolo",
+              "code": "eprolo"
+            },
+            "title": "Tea Cup 100x",
+            "body_html": "The best new cpu<br />New Product",
+            "categories": [
+              {
+                "name": "Fashion",
+                "code": "fashion"
+              }
+            ],
+            "available_to_sell": true,
+            "accept_refund": true,
+            "accept_returns": true,
+            "brand": {
+              "name": "Lego"
+            },
+            "condition": "new",
+            "image_urls": [
+              "https://www.am-static.com/supplier/images/xxxxx"
+            ],
+            "shipping_prices": [
+              {
+                "variant_ids": [
+                  "9eee699559924f9db48eced2ae2395c3"
+                ],
+                "external_ecommerce_variant_ids": [
+                  "544454"
+                ],
+                "shipping_options": [
+                  {
+                    "external_option_id": "879923",
+                    "shipping_method": "ePacket",
+                    "country": "ALA",
+                    "shipping_time_sla": "2 - 3 Business days",
+                    "price": [
+                      {
+                        "unit": 1,
+                        "amount": 4,
+                        "currency": "USD"
+                      }
+                    ]
+                  }
+                ],
+                "metrics": {
+                  "updated_at": "2019-11-06T02:54:27+00:00"
+                }
+              }
+            ],
+            "options": [
+              {
+                "name": "Color",
+                "values": [
+                  "Black",
+                  "Greep",
+                  "Red"
+                ]
+              },
+              {
+                "name": "length",
+                "values": [
+                  "2m",
+                  "3m"
+                ]
+              }
+            ],
+            "variants": [
+              {
+                "universal_id": "8eee699559924f9db48eced2ae239iii",
+                "external_vendor_variant_id": "544454",
+                "sku": "198762889",
+                "upc": "",
+                "ean": "",
+                "mpn": "",
+                "model": "VC74LI",
+                "title": "Tea Cup 100x Green",
+                "available_quantity": 12,
+                "warehouse": {
+                  "country": "HKG"
+                },
+                "price": {
+                  "amount": 100,
+                  "currency": "USD"
+                },
+                "unit": "1 pcs",
+                "weight": {
+                  "unit": "kg",
+                  "value": 120
+                },
+                "image_urls": [
+                  "http://wordpress-5.2-dev.aftershipdemo.com/wp-content/uploads/2019/05/56a2e3a78357ccde678f88bebfffdd7b.jpg"
+                ],
+                "sort": 1,
+                "options": [
+                  {
+                    "name": "Color",
+                    "value": "Black"
+                  },
+                  {
+                    "name": "length",
+                    "value": "2m"
+                  }
+                ]
+              }
+            ],
+            "metrics": {
+              "updated_at": "2019-11-06T02:54:27+00:00",
+              "created_at": "2019-11-06T02:52:27+00:00"
+            }
+          }
+        },
+        "description": "",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "external_vendor_product_id": {
+            "type": "string",
+            "description": "supplier's product id"
+          },
+          "universal_id": {
+            "type": "string",
+            "description": "a uuid-v4 c的统一标识"
+          },
+          "supplier": {
+            "$ref": "#/components/schemas/response.supplier"
+          },
+          "title": {
+            "type": "string",
+            "description": ""
+          },
+          "body_html": {
+            "type": "string",
+            "description": "描述：支持多种格式（html, text）"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/category"
+            }
+          },
+          "available_to_sell": {
+            "type": "boolean",
+            "description": "true of false, it will be false, say no stock, or manually mark it to false\ntrue:  describe if supplier can allow us refund\nfalse: describe if supplier can not allow us refund"
+          },
+          "accept_refund": {
+            "type": "boolean"
+          },
+          "accept_returns": {
+            "type": "boolean"
+          },
+          "brand": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "condition": {
+            "type": "string",
+            "enum": [
+              "new",
+              "new_other",
+              "new_with_defects",
+              "refurbished",
+              "seller_refurbished",
+              "use_like_new",
+              "used_very_good",
+              "used_good",
+              "use_acceptable",
+              "open_box_good",
+              "open_box_acceptable",
+              "open_box_like_new"
+            ]
+          },
+          "image_urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "shipping_prices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/shipping_price"
+            }
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/option"
+            }
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/request.variant"
+            }
+          },
+          "metrics": {
+            "type": "object",
+            "properties": {
+              "updated_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "created_at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -1073,7 +1817,7 @@
           "variants": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/variant"
+              "$ref": "#/components/schemas/request.variant"
             }
           },
           "metrics": {
@@ -1325,7 +2069,7 @@
           "variants": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/variant"
+              "$ref": "#/components/schemas/response.variant"
             }
           },
           "metrics": {
@@ -1450,7 +2194,7 @@
             "type": "string"
           },
           "weight": {
-            "$ref": "../common/model/weight.v1.json"
+            "$ref": "./common/model/weight.v1.json"
           },
           "images_urls": {
             "type": "array",
@@ -1564,7 +2308,7 @@
             "type": "string"
           },
           "weight": {
-            "$ref": "../common/model/weight.v1.json"
+            "$ref": "common/model/weight.v1.json"
           },
           "images_urls": {
             "type": "array",
@@ -1583,10 +2327,124 @@
           }
         }
       },
-      "request.put.vendor-product": {
+      "request.post.vendor-product": {
         "title": "request.product",
         "type": "object",
         "description": "",
+        "x-examples": {
+          "example": {
+            "external_vendor_product_id": "7445458",
+            "supplier": {
+              "name": "Eprolo",
+              "code": "eprolo"
+            },
+            "title": "Tea Cup 100x",
+            "body_html": "The best new cpu<br />New Product",
+            "categories": [
+              {
+                "name": "Fashion",
+                "code": "fashion"
+              }
+            ],
+            "available_to_sell": true,
+            "accept_refund": true,
+            "accept_returns": true,
+            "brand": {
+              "name": "Lego"
+            },
+            "condition": "new",
+            "image_urls": [
+              "https://www.am-static.com/supplier/images/xxxxx"
+            ],
+            "shipping_prices": [
+              {
+                "variant_ids": [
+                  "9eee699559924f9db48eced2ae2395c3"
+                ],
+                "external_ecommerce_variant_ids": [
+                  "544454"
+                ],
+                "shipping_options": [
+                  {
+                    "external_option_id": "879923",
+                    "shipping_method": "ePacket",
+                    "country": "ALA",
+                    "shipping_time_sla": "2 - 3 Business days",
+                    "price": [
+                      {
+                        "unit": 1,
+                        "amount": 4,
+                        "currency": "USD"
+                      }
+                    ]
+                  }
+                ],
+                "metrics": {
+                  "updated_at": "2019-11-06T02:54:27+00:00"
+                }
+              }
+            ],
+            "options": [
+              {
+                "name": "Color",
+                "values": [
+                  "Black",
+                  "Greep",
+                  "Red"
+                ]
+              },
+              {
+                "name": "length",
+                "values": [
+                  "2m",
+                  "3m"
+                ]
+              }
+            ],
+            "variants": [
+              {
+                "external_vendor_variant_id": "544454",
+                "sku": "198762889",
+                "upc": "",
+                "ean": "",
+                "mpn": "",
+                "model": "VC74LI",
+                "title": "Tea Cup 100x Green",
+                "available_quantity": 12,
+                "warehouse": {
+                  "country": "HKG"
+                },
+                "price": {
+                  "amount": 100,
+                  "currency": "USD"
+                },
+                "unit": "1 pcs",
+                "weight": {
+                  "unit": "kg",
+                  "value": 120
+                },
+                "image_urls": [
+                  "http://wordpress-5.2-dev.aftershipdemo.com/wp-content/uploads/2019/05/56a2e3a78357ccde678f88bebfffdd7b.jpg"
+                ],
+                "sort": 1,
+                "options": [
+                  {
+                    "name": "Color",
+                    "value": "Black"
+                  },
+                  {
+                    "name": "length",
+                    "value": "2m"
+                  }
+                ]
+              }
+            ],
+            "metrics": {
+              "updated_at": "2019-11-06T02:54:27+00:00",
+              "created_at": "2019-11-06T02:52:27+00:00"
+            }
+          }
+        },
         "properties": {
           "external_vendor_product_id": {
             "type": "string",
@@ -1612,6 +2470,14 @@
           "available_to_sell": {
             "type": "boolean",
             "description": "true of false, it will be false, say no stock, or manually mark it to false\ntrue:  describe if supplier can allow us refund\nfalse: describe if supplier can not allow us refund"
+          },
+          "accept_refund": {
+            "type": "boolean",
+            "description": "true:  describe if supplier can allow us refund\nfalse: describe if supplier can not allow us refund"
+          },
+          "accept_returns": {
+            "type": "boolean",
+            "description": "true:  describe if supplier can allow us return\nfalse: describe if supplier can not allow us return\n"
           },
           "brand": {
             "type": "object",
@@ -1646,7 +2512,7 @@
           "variants": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/variant"
+              "$ref": "#/components/schemas/response.variant"
             }
           },
           "metrics": {
