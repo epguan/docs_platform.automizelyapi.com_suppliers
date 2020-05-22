@@ -147,8 +147,7 @@
       },
       "parameters": []
     },
-    "/v1/products/{universal_id}": {
-      
+    "/v1/products/{id}": {
       "patch": {
         "summary": "",
         "operationId": "patch-v1-products",
@@ -329,11 +328,20 @@
           "schema": {
             "type": "string"
           },
-          "name": "universal_id",
+          "name": "id",
           "in": "path",
           "required": true
         }
-      ]
+      ],
+      "delete": {
+        "summary": "",
+        "operationId": "delete-v1-products-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     },
     "/v1/products": {
       "get": {
@@ -553,6 +561,15 @@
           }
         ],
         "description": ""
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-v1-products",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   },
