@@ -1,0 +1,12 @@
+{
+  "title": "weight",
+  "type": "object",
+  "properties": {
+    "unit": {
+      "type": "string"
+    },
+    "value": {
+      "type": "number"
+    }
+  }
+}

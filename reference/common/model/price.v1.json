@@ -1,0 +1,24 @@
+{
+  "title": "price",
+  "type": "object",
+  "properties": {
+    "unit": {
+      "type": "integer",
+      "description": "用来表示是多少个的价格"
+    },
+    "amount": {
+      "type": "number",
+      "description": "价格"
+    },
+    "currency": {
+      "type": "string"
+    }
+  },
+  "x-examples": {
+    "example-1": {}
+  },
+  "x-tags": [
+    "common"
+  ],
+  "description": "price"
+}
