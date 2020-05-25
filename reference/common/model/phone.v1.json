@@ -1,0 +1,19 @@
+{
+  "title": "phone",
+  "type": "object",
+  "properties": {
+    "country_code": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    }
+  },
+  "x-examples": {
+    "Example": {
+      "country_code": "86",
+      "number": "18620862287"
+    }
+  },
+  "description": "phone model"
+}
