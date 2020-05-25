@@ -2,7 +2,10 @@
   "title": "price",
   "type": "object",
   "x-examples": {
-    "example-1": {}
+    "example": {
+      "amount": 100,
+      "currency": "USD"
+    }
   },
   "x-tags": [
     "common"
