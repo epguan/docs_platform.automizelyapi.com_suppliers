@@ -1,0 +1,23 @@
+{
+  "x-examples": {
+    "Example": {
+      "code": 50001,
+      "type": "InternalError",
+      "message": "Something went wrong on Automizely's end.  Also, some error that cannot be retried happened on an external system that this call relies on. "
+    }
+  },
+  "properties": {
+    "code": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "title": "meta.50001",
+  "description": "meta.50001 model"
+}

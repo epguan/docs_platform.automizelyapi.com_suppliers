@@ -1,0 +1,743 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "orders",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/suppliers/v1/orders": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "./common/model/meta.20000.v1.json"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "orders": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/response.orders"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-suppliers-v1-orders",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "page"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "limit"
+          }
+        ]
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-suppliers-v1-orders",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/request.orders"
+              },
+              "examples": {
+                "example": {
+                  "value": {
+                    "id": "455e7fa6576c4446af9ffd8ef1fa6001",
+                    "business_order_id": "102e7fa6576c4446af9ffd8ef1fa6851",
+                    "order_status": "open",
+                    "fulfillment_status": "partially_fulfilled",
+                    "organization": {
+                      "id": "0f456bfa2c394c94999cb7a6c465c1e6"
+                    },
+                    "items": [
+                      {
+                        "id": "222a8aa1ecd019dd3520ff791ee3a221",
+                        "business_item_id": "102a8aa1ecd019dd3520ff791ee3a24c",
+                        "quantity": 1,
+                        "sku": "023F10E6558944958E924FBB66E6531E",
+                        "unit_price": {
+                          "currency": "HKD",
+                          "amount": 15
+                        },
+                        "universal_product_id": "983e7fa6576c4446af9ffd8ef1fa692100",
+                        "universal_variant_id": "773e7fa6576c4446af9ffd8ef1fa692122"
+                      },
+                      {
+                        "id": "102a8aa1ecd019dd3520ff791ee3a24c",
+                        "business_item_id": "202a8aa1ecd019dd3520ff791ee3a24d",
+                        "sku": "333333333333333",
+                        "title": "中球 - 1 / red",
+                        "quantity": 1,
+                        "unit_price": {
+                          "currency": "HKD",
+                          "amount": 20
+                        },
+                        "universal_product_id": "983e7fa6576c4446af9ffd8ef1fa692100",
+                        "universal_variant_id": "773e7fa6576c4446af9ffd8ef1fa692122"
+                      }
+                    ],
+                    "trackings": [
+                      {
+                        "items": [
+                          {
+                            "id": "222a8aa1ecd019dd3520ff791ee3a221"
+                          }
+                        ],
+                        "tracking_number": "123456789010",
+                        "slug": "fedex",
+                        "additional_fields": {
+                          "postal_code": "522000",
+                          "ship_date": "20200518",
+                          "account_number": "876994760",
+                          "origin_country": "USA",
+                          "destination_country": "UK",
+                          "state": "NewYork",
+                          "key": "38784963"
+                        }
+                      }
+                    ],
+                    "shipping_address": {
+                      "external_id": null,
+                      "description": null,
+                      "company": "Automizely",
+                      "first_name": "Bryce",
+                      "last_name": "Zhang",
+                      "email": null,
+                      "address_line_1": "NangShang",
+                      "address_line_2": "NanShan",
+                      "address_line_3": null,
+                      "city": "ShenZhen",
+                      "state": "Guangdong",
+                      "country": "CHN",
+                      "postal_code": "522000",
+                      "phone": {
+                        "country_code": null,
+                        "number": "15920404588"
+                      },
+                      "type": "residential",
+                      "tax_number": null
+                    },
+                    "created_at": "2019-11-11T06:43:13+00:00",
+                    "updated_at": "2019-11-11T06:43:13+00:00"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/suppliers/v1/orders/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "patch": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "./common/model/meta.20000.v1.json"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "order": {
+                          "$ref": "#/components/schemas/request.orders"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-suppliers-v1-orders-id",
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./products.v1.json#/components/schemas/request.patch.products"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "response.orders": {
+        "title": "response.orders",
+        "type": "object",
+        "x-examples": {
+          "example": {
+            "id": "455e7fa6576c4446af9ffd8ef1fa6001",
+            "business_order_id": "102e7fa6576c4446af9ffd8ef1fa6851",
+            "order_status": "open",
+            "fulfillment_status": "partially_fulfilled",
+            "organization": {
+              "id": "0f456bfa2c394c94999cb7a6c465c1e6"
+            },
+            "items": [
+              {
+                "business_item_id": "102a8aa1ecd019dd3520ff791ee3a24c",
+                "quantity": 1,
+                "sku": "023F10E6558944958E924FBB66E6531E",
+                "unit_price": {
+                  "currency": "HKD",
+                  "amount": 15
+                },
+                "universal_product_id": "983e7fa6576c4446af9ffd8ef1fa692100",
+                "universal_variant_id": "773e7fa6576c4446af9ffd8ef1fa692122"
+              },
+              {
+                "business_item_id": "202a8aa1ecd019dd3520ff791ee3a24d",
+                "sku": "333333333333333",
+                "quantity": 1,
+                "unit_price": {
+                  "currency": "HKD",
+                  "amount": 20
+                },
+                "universal_product_id": "983e7fa6576c4446af9ffd8ef1fa692100",
+                "universal_variant_id": "773e7fa6576c4446af9ffd8ef1fa692122"
+              }
+            ],
+            "trackings": [
+              {
+                "items": [
+                  {
+                    "id": "222a8aa1ecd019dd3520ff791ee3a221"
+                  }
+                ],
+                "tracking_number": "123456789010",
+                "slug": "fedex",
+                "additional_fields": {
+                  "postal_code": "522000",
+                  "ship_date": "20200518",
+                  "account_number": "876994760",
+                  "origin_country": "USA",
+                  "destination_country": "UK",
+                  "state": "NewYork",
+                  "key": "38784963"
+                }
+              }
+            ],
+            "shipping_address": {
+              "external_id": null,
+              "description": null,
+              "company": "Automizely",
+              "first_name": "Bryce",
+              "last_name": "Zhang",
+              "email": null,
+              "address_line_1": "NangShang",
+              "address_line_2": "NanShan",
+              "address_line_3": null,
+              "city": "ShenZhen",
+              "state": "Guangdong",
+              "country": "CHN",
+              "postal_code": "522000",
+              "phone": {
+                "country_code": null,
+                "number": "15920404588"
+              },
+              "type": "residential",
+              "tax_number": null
+            },
+            "created_at": "2019-11-11T06:43:13+00:00",
+            "updated_at": "2019-11-11T06:43:13+00:00"
+          }
+        },
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "business_order_id": {
+            "type": "string"
+          },
+          "order_status": {
+            "type": "string",
+            "description": "open"
+          },
+          "fulfillment_status": {
+            "type": "string",
+            "description": "partially_fulfilled"
+          },
+          "organization": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          },
+          "items": {
+            "$ref": "#/components/schemas/response.orders.item"
+          },
+          "trackings": {
+            "$ref": "#/components/schemas/orders.tracking"
+          },
+          "shipping_address": {
+            "$ref": "#/components/schemas/shipping_address"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "business_order_id",
+          "order_status",
+          "fulfillment_status",
+          "organization",
+          "items",
+          "trackings",
+          "shipping_address",
+          "created_at",
+          "updated_at"
+        ]
+      },
+      "request.orders": {
+        "title": "request.orders",
+        "type": "object",
+        "x-examples": {
+          "example": {
+            "business_order_id": "102e7fa6576c4446af9ffd8ef1fa6851",
+            "organization": {
+              "id": "0f456bfa2c394c94999cb7a6c465c1e6"
+            },
+            "items": [
+              {
+                "business_item_id": "102a8aa1ecd019dd3520ff791ee3a24c",
+                "quantity": 1,
+                "sku": "023F10E6558944958E924FBB66E6531E",
+                "unit_price": {
+                  "currency": "HKD",
+                  "amount": 15
+                },
+                "universal_product_id": "983e7fa6576c4446af9ffd8ef1fa692100",
+                "universal_variant_id": "773e7fa6576c4446af9ffd8ef1fa692122"
+              },
+              {
+                "business_item_id": "202a8aa1ecd019dd3520ff791ee3a24d",
+                "sku": "333333333333333",
+                "quantity": 1,
+                "unit_price": {
+                  "currency": "HKD",
+                  "amount": 20
+                },
+                "universal_product_id": "983e7fa6576c4446af9ffd8ef1fa692100",
+                "universal_variant_id": "773e7fa6576c4446af9ffd8ef1fa692122"
+              }
+            ],
+            "trackings": [
+              {
+                "items": [
+                  {
+                    "id": "222a8aa1ecd019dd3520ff791ee3a221"
+                  }
+                ],
+                "tracking_number": "123456789010",
+                "slug": "fedex",
+                "additional_fields": {
+                  "postal_code": "522000",
+                  "ship_date": "20200518",
+                  "account_number": "876994760",
+                  "origin_country": "USA",
+                  "destination_country": "UK",
+                  "state": "NewYork",
+                  "key": "38784963"
+                }
+              }
+            ],
+            "shipping_address": {
+              "external_id": null,
+              "description": null,
+              "company": "Automizely",
+              "first_name": "Bryce",
+              "last_name": "Zhang",
+              "email": null,
+              "address_line_1": "NangShang",
+              "address_line_2": "NanShan",
+              "address_line_3": null,
+              "city": "ShenZhen",
+              "state": "Guangdong",
+              "country": "CHN",
+              "postal_code": "522000",
+              "phone": {
+                "country_code": null,
+                "number": "15920404588"
+              },
+              "type": "residential",
+              "tax_number": null
+            }
+          }
+        },
+        "properties": {
+          "business_order_id": {
+            "type": "string"
+          },
+          "organization": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          },
+          "items": {
+            "$ref": "#/components/schemas/request.item"
+          },
+          "trackings": {
+            "$ref": "#/components/schemas/orders.tracking"
+          },
+          "shipping_address": {
+            "$ref": "#/components/schemas/shipping_address"
+          }
+        },
+        "required": [
+          "business_order_id",
+          "items",
+          "trackings",
+          "shipping_address"
+        ]
+      },
+      "request.orders.item": {
+        "title": "request.item",
+        "type": "object",
+        "properties": {
+          "business_item_id": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "unit_price": {
+            "$ref": "./common/model/price.v1.json"
+          },
+          "universal_product_id": {
+            "type": "string"
+          },
+          "universal_variant_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "business_item_id",
+          "quantity",
+          "sku",
+          "unit_price",
+          "universal_product_id",
+          "universal_variant_id"
+        ],
+        "x-examples": {
+          "example": {
+            "business_item_id": "102a8aa1ecd019dd3520ff791ee3a24c",
+            "quantity": 1,
+            "sku": "023F10E6558944958E924FBB66E6531E",
+            "unit_price": {
+              "currency": "HKD",
+              "amount": 15
+            },
+            "universal_product_id": "983e7fa6576c4446af9ffd8ef1fa692100",
+            "universal_variant_id": "773e7fa6576c4446af9ffd8ef1fa692122"
+          }
+        }
+      },
+      "response.orders.item": {
+        "title": "response.item",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "business_item_id": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "unit_price": {
+            "$ref": "./common/model/price.v1.json"
+          },
+          "universal_product_id": {
+            "type": "string"
+          },
+          "universal_variant_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "business_item_id",
+          "quantity",
+          "sku",
+          "unit_price",
+          "universal_product_id",
+          "universal_variant_id"
+        ],
+        "x-examples": {
+          "example": {
+            "id": "455e7fa6576c4446af9ffd8ef1fa6001",
+            "business_item_id": "102a8aa1ecd019dd3520ff791ee3a24c",
+            "quantity": 1,
+            "sku": "023F10E6558944958E924FBB66E6531E",
+            "unit_price": {
+              "currency": "HKD",
+              "amount": 15
+            },
+            "universal_product_id": "983e7fa6576c4446af9ffd8ef1fa692100",
+            "universal_variant_id": "773e7fa6576c4446af9ffd8ef1fa692122"
+          }
+        }
+      },
+      "orders.tracking": {
+        "title": "request.tracking",
+        "type": "object",
+        "x-examples": {
+          "example": {}
+        },
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "tracking_number": {
+            "type": "string",
+            "example": "123456789010"
+          },
+          "slug": {
+            "type": "string",
+            "example": "fedex"
+          },
+          "additional_fields": {
+            "$ref": "#/components/schemas/orders.tracking.additional_fields"
+          }
+        }
+      },
+      "orders.tracking.additional_fields": {
+        "title": "request.orders.tracking.item.additional_fields",
+        "type": "object",
+        "properties": {
+          "postal_code": {
+            "type": "string"
+          },
+          "ship_date": {
+            "type": "string"
+          },
+          "account_number": {
+            "type": "string",
+            "example": "876994760"
+          },
+          "origin_country": {
+            "type": "string",
+            "example": "USA"
+          },
+          "destination_country": {
+            "type": "string",
+            "example": "UK"
+          },
+          "state": {
+            "type": "string",
+            "example": "NewYork"
+          },
+          "key": {
+            "type": "string",
+            "example": "38784963"
+          }
+        },
+        "required": [
+          "postal_code",
+          "ship_date",
+          "account_number",
+          "origin_country",
+          "destination_country",
+          "state",
+          "key"
+        ]
+      },
+      "shipping_address": {
+        "title": "response.shipping_address",
+        "type": "object",
+        "properties": {
+          "external_id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string",
+            "example": "Automizely"
+          },
+          "first_name": {
+            "type": "string",
+            "example": "Bryce"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Zhang"
+          },
+          "email": {
+            "type": "string"
+          },
+          "address_line_1": {
+            "type": "string",
+            "example": "NangShang"
+          },
+          "address_line_2": {
+            "type": "string",
+            "example": "NanShan"
+          },
+          "address_line_3": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string",
+            "example": "ShenZhen"
+          },
+          "state": {
+            "type": "string",
+            "example": "Guangdong"
+          },
+          "country": {
+            "type": "string",
+            "example": "CHN"
+          },
+          "postal_code": {
+            "type": "string",
+            "example": "522000"
+          },
+          "phone": {
+            "$ref": "./common/model/phone.v1.json"
+          },
+          "type": {
+            "type": "string",
+            "example": "residential"
+          },
+          "tax_number": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "external_id",
+          "first_name",
+          "last_name",
+          "address_line_1",
+          "city",
+          "state",
+          "country",
+          "postal_code",
+          "type"
+        ],
+        "x-examples": {
+          "example": {
+            "external_id": null,
+            "description": null,
+            "company": "Automizely",
+            "first_name": "Bryce",
+            "last_name": "Zhang",
+            "email": null,
+            "address_line_1": "NangShang",
+            "address_line_2": "NanShan",
+            "address_line_3": null,
+            "city": "ShenZhen",
+            "state": "Guangdong",
+            "country": "CHN",
+            "postal_code": "522000",
+            "phone": {
+              "country_code": null,
+              "number": "15920404588"
+            },
+            "type": "residential",
+            "tax_number": null
+          }
+        },
+        "description": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "x-examples": {
+    "Example": {
+      "code": 40002,
+      "type": "BadRequest",
+      "message": "Request missing required parameters."
+    }
+  },
+  "title": "meta.40002",
+  "description": "meta.40002 model"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "x-examples": {
+    "Example": {
+      "code": 20100,
+      "type": "Created",
+      "message": "The request was successful, we created a new resource and the response body contains the representation."
+    }
+  },
+  "title": "meta.20100",
+  "description": "meta.20100 model"
+}

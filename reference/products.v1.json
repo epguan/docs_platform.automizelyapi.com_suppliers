@@ -51,7 +51,7 @@
                   }
                 },
                 "examples": {
-                  "response-example": {
+                  "example": {
                     "value": {
                       "meta": {
                         "code": 20000,
@@ -236,7 +236,7 @@
                   "type": "object",
                   "properties": {
                     "meta": {
-                      "$ref": "./common/model/meta.20000.v1.json"
+                      "$ref": "./common/model/meta.20100.v1.json"
                     },
                     "data": {
                       "type": "object",
@@ -252,12 +252,12 @@
                   }
                 },
                 "examples": {
-                  "response-example": {
+                  "example": {
                     "value": {
                       "meta": {
-                        "code": 20000,
-                        "type": "OK",
-                        "message": "Everything worked as expected."
+                        "code": 20100,
+                        "type": "Created",
+                        "message": "The request was successful, we created a new resource and the response body contains the representation."
                       },
                       "data": {
                         "product": {
@@ -578,6 +578,194 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "./common/model/meta.40002.v1.json"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "examples": {
+                  "Response Example": {
+                    "value": {
+                      "meta": {
+                        "code": 20000,
+                        "type": "OK",
+                        "message": "Everything worked as expected."
+                      },
+                      "data": {
+                        "parameter_string": "organization_id=5b4827cd0c72190e0036178003617822&app_name=returnscenter&app_platform=shopify&app_key=yy-01",
+                        "products": [
+                          {
+                            "id": "sgsgsghgw",
+                            "external_id": "2678030336085",
+                            "app": {
+                              "key": "yy-01",
+                              "name": "postmen",
+                              "platform": "shopify"
+                            },
+                            "organization": {
+                              "id": "5b4827cd0c72190e00361782"
+                            },
+                            "title": "sfsfa",
+                            "handle": "ipod",
+                            "product_types": [
+                              "fruit"
+                            ],
+                            "product_tags": [
+                              "nut"
+                            ],
+                            "image_urls": [
+                              "http://magento-2.2.8.aftershipdemo.com/pub/media/catalog/product/w/b/wb04-blue-0.jpg"
+                            ],
+                            "first_variant_price": {
+                              "amount": 45,
+                              "currency": "USD"
+                            },
+                            "product_url": "http://magento-2.2.8.aftershipdemo.com/pub/media/catalog/product/w/b/wb04-blue-0.jpg",
+                            "description": "<b>Big</b> iPhone",
+                            "taxable": true,
+                            "collections": [
+                              {
+                                "id": "3fa19129b47444a59ad46795a63ebe92",
+                                "external_id": "95497060437",
+                                "title": "Customer Collection Test 001",
+                                "collection_url": "https://yy-01.myshopify.com/collections/frontpage",
+                                "collection_type": "custom_collection",
+                                "description": null,
+                                "image_url": "https://cdn.shopify.com/s/files/1/0097/9274/9653/collections/1200px-Coca-Cola_logo.svg_3fdc3965-ec23-483f-92b6-511e16068d0d.png?v=1574666800"
+                              },
+                              {
+                                "id": "97e1da2f9ccc45afb6a898bf42f2d859",
+                                "external_id": "156343861333",
+                                "title": "Smart Collection Test 001",
+                                "collection_url": "https://yy-01.myshopify.com/collections/smart-collection-test-001",
+                                "collection_type": "smart_collection",
+                                "description": null,
+                                "image_url": "https://cdn.shopify.com/s/files/1/0097/9274/9653/collections/ezgif-5-3f139fe82b16.png?v=1574666860"
+                              }
+                            ],
+                            "variants": [
+                              {
+                                "id": "000cc8ad258943d6bab462a4b2ec8e6e",
+                                "external_id": "34542",
+                                "title": "test-shirt",
+                                "price": {
+                                  "amount": 2.3,
+                                  "currency": "USD"
+                                },
+                                "compare_at_price": {
+                                  "currency": "USD",
+                                  "amount": 80
+                                },
+                                "sku": "1002",
+                                "available_quantity": 100,
+                                "image_url": "https://cdn.shopify.com/s/files/1/0097/9274/9653/collections/ezgif-5-3f139fe82b16.png?v=1574666860",
+                                "weight": {
+                                  "unit": "kg",
+                                  "value": 123
+                                },
+                                "options": [
+                                  {
+                                    "name": "Color",
+                                    "value": "Black"
+                                  },
+                                  {
+                                    "name": "Size",
+                                    "value": "Small"
+                                  }
+                                ],
+                                "allow_backorder": false
+                              },
+                              {
+                                "id": "000cc8ad258943d6bab462a4b2ec8e5e",
+                                "external_id": "34543",
+                                "title": "test-shirt green",
+                                "price": {
+                                  "amount": "2.3",
+                                  "currency": "USD"
+                                },
+                                "compare_at_price": {
+                                  "currency": "USD",
+                                  "amount": 80
+                                },
+                                "sku": "1003",
+                                "available_quantity": 200,
+                                "image_url": "https://cdn.shopify.com/s/files/1/0097/9274/9653/collections/ezgif-5-3f139fe82b16.png?v=1574666860",
+                                "weight": {
+                                  "unit": "kg",
+                                  "value": 123
+                                },
+                                "options": [
+                                  {
+                                    "name": "Color",
+                                    "value": "Black"
+                                  },
+                                  {
+                                    "name": "Size",
+                                    "value": "Small"
+                                  }
+                                ],
+                                "allow_backorder": false
+                              }
+                            ],
+                            "metrics": {
+                              "created_at": "2019-12-23T01:13:30Z",
+                              "updated_at": "2020-04-09T04:14:09Z"
+                            },
+                            "created_at": "2019-11-06T02:52:27+00:00",
+                            "updated_at": "2019-12-19T09:13:09+00:00"
+                          }
+                        ],
+                        "pagination": {
+                          "page": 1,
+                          "limit": 5
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "./common/model/meta.50001.v1.json"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "examples": {
+                  "Response Example": {
+                    "value": {
+                      "meta": {
+                        "code": 50001,
+                        "type": "InternalError",
+                        "message": "Something went wrong on Automizely's end.  Also, some error that cannot be retried happened on an external system that this call relies on. "
+                      },
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "description": "",
@@ -791,22 +979,6 @@
               "type": "string"
             },
             "in": "query",
-            "name": "app_platform",
-            "description": "shopify ,wooc"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "app_key",
-            "description": ""
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
             "name": "page"
           },
           {
@@ -841,7 +1013,7 @@
                   "type": "object",
                   "properties": {
                     "meta": {
-                      "$ref": "common/model/meta.20000.v1.json"
+                      "$ref": "./common/model/meta.20100.v1.json"
                     },
                     "data": {
                       "type": "object",
@@ -857,12 +1029,12 @@
                   }
                 },
                 "examples": {
-                  "response-example": {
+                  "example": {
                     "value": {
                       "meta": {
-                        "code": 20000,
-                        "type": "OK",
-                        "message": "Everything worked as expected."
+                        "code": 20100,
+                        "type": "Created",
+                        "message": "The request was successful, we created a new resource and the response body contains the representation."
                       },
                       "data": {
                         "product": {
