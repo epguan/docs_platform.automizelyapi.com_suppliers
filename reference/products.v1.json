@@ -11,12 +11,12 @@
   },
   "servers": [
     {
-      "url": "http://platform.automizelyAPI.com/suppliers",
+      "url": "http://platform.automizelyAPI.com/suppliers/v1",
       "description": "Production_url"
     }
   ],
   "paths": {
-    "/v1/vendor-products": {
+    "/vendor-products": {
       "get": {
         "summary": "",
         "operationId": "get-v1-vendor-products",
@@ -51,7 +51,7 @@
                   }
                 },
                 "examples": {
-                  "response-example": {
+                  "example": {
                     "value": {
                       "meta": {
                         "code": 20000,
@@ -208,7 +208,8 @@
               "type": "string"
             },
             "in": "query",
-            "name": "page"
+            "name": "page",
+            "required": true
           },
           {
             "schema": {
@@ -223,7 +224,7 @@
         ]
       },
       "post": {
-        "summary": "",
+        "summary": "POST /vendor-products",
         "operationId": "post-v1-vendor-products",
         "responses": {
           "200": {
@@ -235,7 +236,7 @@
                   "type": "object",
                   "properties": {
                     "meta": {
-                      "$ref": "./common/model/meta.20000.v1.json"
+                      "$ref": "./common/model/meta.20100.v1.json"
                     },
                     "data": {
                       "type": "object",
@@ -251,12 +252,12 @@
                   }
                 },
                 "examples": {
-                  "response-example": {
+                  "example": {
                     "value": {
                       "meta": {
-                        "code": 20000,
-                        "type": "OK",
-                        "message": "Everything worked as expected."
+                        "code": 20100,
+                        "type": "Created",
+                        "message": "The request was successful, we created a new resource and the response body contains the representation."
                       },
                       "data": {
                         "product": {
@@ -398,11 +399,14 @@
           "description": ""
         },
         "description": "Idempotency products save function .",
-        "parameters": []
+        "parameters": [],
+        "tags": [
+          "Api"
+        ]
       },
       "parameters": []
     },
-    "/v1/products/{id}": {
+    "/products/{id}": {
       "patch": {
         "summary": "PATCH  /v1/products/{id}",
         "operationId": "patch-v1-products",
@@ -574,6 +578,194 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "./common/model/meta.40002.v1.json"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "examples": {
+                  "Response Example": {
+                    "value": {
+                      "meta": {
+                        "code": 20000,
+                        "type": "OK",
+                        "message": "Everything worked as expected."
+                      },
+                      "data": {
+                        "parameter_string": "organization_id=5b4827cd0c72190e0036178003617822&app_name=returnscenter&app_platform=shopify&app_key=yy-01",
+                        "products": [
+                          {
+                            "id": "sgsgsghgw",
+                            "external_id": "2678030336085",
+                            "app": {
+                              "key": "yy-01",
+                              "name": "postmen",
+                              "platform": "shopify"
+                            },
+                            "organization": {
+                              "id": "5b4827cd0c72190e00361782"
+                            },
+                            "title": "sfsfa",
+                            "handle": "ipod",
+                            "product_types": [
+                              "fruit"
+                            ],
+                            "product_tags": [
+                              "nut"
+                            ],
+                            "image_urls": [
+                              "http://magento-2.2.8.aftershipdemo.com/pub/media/catalog/product/w/b/wb04-blue-0.jpg"
+                            ],
+                            "first_variant_price": {
+                              "amount": 45,
+                              "currency": "USD"
+                            },
+                            "product_url": "http://magento-2.2.8.aftershipdemo.com/pub/media/catalog/product/w/b/wb04-blue-0.jpg",
+                            "description": "<b>Big</b> iPhone",
+                            "taxable": true,
+                            "collections": [
+                              {
+                                "id": "3fa19129b47444a59ad46795a63ebe92",
+                                "external_id": "95497060437",
+                                "title": "Customer Collection Test 001",
+                                "collection_url": "https://yy-01.myshopify.com/collections/frontpage",
+                                "collection_type": "custom_collection",
+                                "description": null,
+                                "image_url": "https://cdn.shopify.com/s/files/1/0097/9274/9653/collections/1200px-Coca-Cola_logo.svg_3fdc3965-ec23-483f-92b6-511e16068d0d.png?v=1574666800"
+                              },
+                              {
+                                "id": "97e1da2f9ccc45afb6a898bf42f2d859",
+                                "external_id": "156343861333",
+                                "title": "Smart Collection Test 001",
+                                "collection_url": "https://yy-01.myshopify.com/collections/smart-collection-test-001",
+                                "collection_type": "smart_collection",
+                                "description": null,
+                                "image_url": "https://cdn.shopify.com/s/files/1/0097/9274/9653/collections/ezgif-5-3f139fe82b16.png?v=1574666860"
+                              }
+                            ],
+                            "variants": [
+                              {
+                                "id": "000cc8ad258943d6bab462a4b2ec8e6e",
+                                "external_id": "34542",
+                                "title": "test-shirt",
+                                "price": {
+                                  "amount": 2.3,
+                                  "currency": "USD"
+                                },
+                                "compare_at_price": {
+                                  "currency": "USD",
+                                  "amount": 80
+                                },
+                                "sku": "1002",
+                                "available_quantity": 100,
+                                "image_url": "https://cdn.shopify.com/s/files/1/0097/9274/9653/collections/ezgif-5-3f139fe82b16.png?v=1574666860",
+                                "weight": {
+                                  "unit": "kg",
+                                  "value": 123
+                                },
+                                "options": [
+                                  {
+                                    "name": "Color",
+                                    "value": "Black"
+                                  },
+                                  {
+                                    "name": "Size",
+                                    "value": "Small"
+                                  }
+                                ],
+                                "allow_backorder": false
+                              },
+                              {
+                                "id": "000cc8ad258943d6bab462a4b2ec8e5e",
+                                "external_id": "34543",
+                                "title": "test-shirt green",
+                                "price": {
+                                  "amount": "2.3",
+                                  "currency": "USD"
+                                },
+                                "compare_at_price": {
+                                  "currency": "USD",
+                                  "amount": 80
+                                },
+                                "sku": "1003",
+                                "available_quantity": 200,
+                                "image_url": "https://cdn.shopify.com/s/files/1/0097/9274/9653/collections/ezgif-5-3f139fe82b16.png?v=1574666860",
+                                "weight": {
+                                  "unit": "kg",
+                                  "value": 123
+                                },
+                                "options": [
+                                  {
+                                    "name": "Color",
+                                    "value": "Black"
+                                  },
+                                  {
+                                    "name": "Size",
+                                    "value": "Small"
+                                  }
+                                ],
+                                "allow_backorder": false
+                              }
+                            ],
+                            "metrics": {
+                              "created_at": "2019-12-23T01:13:30Z",
+                              "updated_at": "2020-04-09T04:14:09Z"
+                            },
+                            "created_at": "2019-11-06T02:52:27+00:00",
+                            "updated_at": "2019-12-19T09:13:09+00:00"
+                          }
+                        ],
+                        "pagination": {
+                          "page": 1,
+                          "limit": 5
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "./common/model/meta.50001.v1.json"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "examples": {
+                  "Response Example": {
+                    "value": {
+                      "meta": {
+                        "code": 50001,
+                        "type": "InternalError",
+                        "message": "Something went wrong on Automizely's end.  Also, some error that cannot be retried happened on an external system that this call relies on. "
+                      },
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "description": "",
@@ -604,7 +796,7 @@
         }
       ]
     },
-    "/v1/products": {
+    "/products": {
       "get": {
         "summary": "GET /v1/products",
         "operationId": "get-v1-products",
@@ -787,22 +979,6 @@
               "type": "string"
             },
             "in": "query",
-            "name": "app_platform",
-            "description": "shopify ,wooc"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
-            "name": "app_key",
-            "description": ""
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "query",
             "name": "page"
           },
           {
@@ -820,6 +996,9 @@
             "name": "am-api-key",
             "description": "Gateway api key"
           }
+        ],
+        "tags": [
+          "Api"
         ]
       },
       "post": {
@@ -834,7 +1013,7 @@
                   "type": "object",
                   "properties": {
                     "meta": {
-                      "$ref": "common/model/meta.20000.v1.json"
+                      "$ref": "./common/model/meta.20100.v1.json"
                     },
                     "data": {
                       "type": "object",
@@ -850,12 +1029,12 @@
                   }
                 },
                 "examples": {
-                  "response-example": {
+                  "example": {
                     "value": {
                       "meta": {
-                        "code": 20000,
-                        "type": "OK",
-                        "message": "Everything worked as expected."
+                        "code": 20100,
+                        "type": "Created",
+                        "message": "The request was successful, we created a new resource and the response body contains the representation."
                       },
                       "data": {
                         "product": {
@@ -996,8 +1175,12 @@
               }
             }
           }
-        }
-      }
+        },
+        "tags": [
+          "Api"
+        ]
+      },
+      "parameters": []
     }
   },
   "components": {
@@ -1006,28 +1189,13 @@
         "title": "supplier",
         "type": "object",
         "description": "供应商信息",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "code": {
-            "type": "string"
-          }
-        },
         "x-examples": {
           "example": {
             "id": "uuid",
             "name": "Eprolo",
             "code": "eprolo"
           }
-        }
-      },
-      "category": {
-        "title": "category",
-        "type": "object",
+        },
         "properties": {
           "id": {
             "type": "string"
@@ -1039,6 +1207,14 @@
             "type": "string"
           }
         },
+        "required": [
+          "name",
+          "code"
+        ]
+      },
+      "category": {
+        "title": "category",
+        "type": "object",
         "x-examples": {
           "example": {
             "id": "kiuee699559924f9db48eced2ae23987h",
@@ -1047,7 +1223,22 @@
           }
         },
         "description": "category",
-        "x-tags": []
+        "x-tags": [],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "code"
+        ]
       },
       "shipping_option": {
         "title": "shipping_option",
@@ -1090,7 +1281,13 @@
               "$ref": "./common/model/price.v1.json"
             }
           }
-        }
+        },
+        "required": [
+          "external_option_id",
+          "shipping_method",
+          "country",
+          "price"
+        ]
       },
       "shipping_price": {
         "title": "shipping_prices",
@@ -1114,6 +1311,9 @@
           },
           "metrics": {
             "type": "object",
+            "required": [
+              "updated_at"
+            ],
             "properties": {
               "updated_at": {
                 "type": "string",
@@ -1121,7 +1321,13 @@
               }
             }
           }
-        }
+        },
+        "required": [
+          "variant_ids",
+          "external_ecommerce_variant_ids",
+          "shipping_options",
+          "metrics"
+        ]
       },
       "option": {
         "title": "option",
@@ -1137,7 +1343,11 @@
               "type": "string"
             }
           }
-        }
+        },
+        "required": [
+          "name",
+          "values"
+        ]
       },
       "request.patch.products": {
         "title": "request.patch.products",
@@ -1301,6 +1511,9 @@
           },
           "brand": {
             "type": "object",
+            "required": [
+              "name"
+            ],
             "properties": {
               "name": {
                 "type": "string"
@@ -1351,6 +1564,10 @@
           },
           "metrics": {
             "type": "object",
+            "required": [
+              "updated_at",
+              "created_at"
+            ],
             "properties": {
               "updated_at": {
                 "type": "string",
@@ -1370,7 +1587,20 @@
             "type": "string",
             "format": "date-time"
           }
-        }
+        },
+        "required": [
+          "external_vendor_product_id",
+          "supplier",
+          "title",
+          "categories",
+          "available_to_sell",
+          "brand",
+          "image_urls",
+          "shipping_prices",
+          "options",
+          "variants",
+          "metrics"
+        ]
       },
       "request.post.products": {
         "title": "request.post.products",
@@ -1534,6 +1764,9 @@
           },
           "brand": {
             "type": "object",
+            "required": [
+              "name"
+            ],
             "properties": {
               "name": {
                 "type": "string"
@@ -1584,6 +1817,10 @@
           },
           "metrics": {
             "type": "object",
+            "required": [
+              "updated_at",
+              "created_at"
+            ],
             "properties": {
               "updated_at": {
                 "type": "string",
@@ -1603,7 +1840,20 @@
             "type": "string",
             "format": "date-time"
           }
-        }
+        },
+        "required": [
+          "external_vendor_product_id",
+          "supplier",
+          "title",
+          "categories",
+          "available_to_sell",
+          "brand",
+          "image_urls",
+          "shipping_prices",
+          "options",
+          "variants",
+          "metrics"
+        ]
       },
       "response.get.vendor-products": {
         "title": "response-vendor-products",
@@ -1772,6 +2022,9 @@
           },
           "brand": {
             "type": "object",
+            "required": [
+              "name"
+            ],
             "properties": {
               "name": {
                 "type": "string"
@@ -1822,6 +2075,10 @@
           },
           "metrics": {
             "type": "object",
+            "required": [
+              "updated_at",
+              "created_at"
+            ],
             "properties": {
               "updated_at": {
                 "type": "string",
@@ -1841,7 +2098,28 @@
             "type": "string",
             "format": "date-time"
           }
-        }
+        },
+        "required": [
+          "id",
+          "external_vendor_product_id",
+          "universal_id",
+          "supplier",
+          "title",
+          "body_html",
+          "categories",
+          "available_to_sell",
+          "accept_refund",
+          "accept_returns",
+          "brand",
+          "condition",
+          "image_urls",
+          "shipping_prices",
+          "options",
+          "variants",
+          "metrics",
+          "updated_at",
+          "created_at"
+        ]
       },
       "response.get.products": {
         "title": "response-vendor-products",
@@ -2024,6 +2302,9 @@
           },
           "brand": {
             "type": "object",
+            "required": [
+              "name"
+            ],
             "properties": {
               "name": {
                 "type": "string"
@@ -2074,6 +2355,10 @@
           },
           "metrics": {
             "type": "object",
+            "required": [
+              "updated_at",
+              "created_at"
+            ],
             "properties": {
               "updated_at": {
                 "type": "string",
@@ -2093,7 +2378,30 @@
             "type": "string",
             "format": "date-time"
           }
-        }
+        },
+        "required": [
+          "id",
+          "external_vendor_product_id",
+          "universal_id",
+          "supplier",
+          "title",
+          "body_html",
+          "categories",
+          "tags",
+          "keywords",
+          "available_to_sell",
+          "accept_refund",
+          "accept_returns",
+          "brand",
+          "condition",
+          "image_urls",
+          "shipping_prices",
+          "options",
+          "variants",
+          "metrics",
+          "updated_at",
+          "created_at"
+        ]
       },
       "response.variant": {
         "title": "response.variant",
@@ -2172,6 +2480,9 @@
           },
           "warehouse": {
             "type": "object",
+            "required": [
+              "country"
+            ],
             "properties": {
               "country": {
                 "type": "string",
@@ -2181,6 +2492,10 @@
           },
           "price": {
             "type": "object",
+            "required": [
+              "amount",
+              "currency"
+            ],
             "properties": {
               "amount": {
                 "type": "number"
@@ -2211,7 +2526,26 @@
               "$ref": "#/components/schemas/option"
             }
           }
-        }
+        },
+        "required": [
+          "id",
+          "universal_id",
+          "external_vendor_variant_id",
+          "sku",
+          "upc",
+          "ean",
+          "mpn",
+          "model",
+          "title",
+          "available_quantity",
+          "warehouse",
+          "price",
+          "unit",
+          "weight",
+          "images_urls",
+          "sort",
+          "options"
+        ]
       },
       "request.variant": {
         "title": "request.variant",
@@ -2257,9 +2591,6 @@
           }
         },
         "properties": {
-          "universal_id": {
-            "type": "string"
-          },
           "external_vendor_variant_id": {
             "type": "string"
           },
@@ -2276,7 +2607,8 @@
             "type": "string"
           },
           "model": {
-            "type": "string"
+            "type": "string",
+            "description": "型号"
           },
           "title": {
             "type": "string"
@@ -2286,6 +2618,9 @@
           },
           "warehouse": {
             "type": "object",
+            "required": [
+              "country"
+            ],
             "properties": {
               "country": {
                 "type": "string",
@@ -2295,6 +2630,10 @@
           },
           "price": {
             "type": "object",
+            "required": [
+              "amount",
+              "currency"
+            ],
             "properties": {
               "amount": {
                 "type": "number"
@@ -2305,7 +2644,8 @@
             }
           },
           "unit": {
-            "type": "string"
+            "type": "string",
+            "description": "// 1 pair, 1 pcs, 10 pcs, 100 pcs, 1 打, etc"
           },
           "weight": {
             "$ref": "common/model/weight.v1.json"
@@ -2322,10 +2662,21 @@
           "options": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/option"
+              "$ref": "#/components/schemas/variant.option"
             }
           }
-        }
+        },
+        "required": [
+          "external_vendor_variant_id",
+          "sku",
+          "title",
+          "warehouse",
+          "price",
+          "unit",
+          "weight",
+          "images_urls",
+          "options"
+        ]
       },
       "request.post.vendor-product": {
         "title": "request.product",
@@ -2481,6 +2832,10 @@
           },
           "brand": {
             "type": "object",
+            "required": [
+              "name",
+              "code"
+            ],
             "properties": {
               "name": {
                 "type": "string"
@@ -2517,6 +2872,9 @@
           },
           "metrics": {
             "type": "object",
+            "required": [
+              "created_at"
+            ],
             "properties": {
               "updated_at": {
                 "type": "string",
@@ -2528,15 +2886,55 @@
               }
             }
           }
-        }
+        },
+        "required": [
+          "external_vendor_product_id",
+          "supplier",
+          "title",
+          "categories",
+          "available_to_sell",
+          "brand",
+          "image_urls",
+          "shipping_prices",
+          "options",
+          "variants",
+          "metrics"
+        ]
       },
       "request.supplier": {
         "title": "request.supplier",
         "type": "object",
         "properties": {
           "code": {
-            "type": "string"
+            "type": "string",
+            "description": "供应商码，hard code,如:eprolo"
+          },
+          "name": {
+            "type": "string",
+            "description": "供应商名，hard code,如:Eprolo"
           }
+        },
+        "required": [
+          "code"
+        ]
+      },
+      "variant.option": {
+        "title": "variant.option",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "value"
+          ]
         }
       }
     }

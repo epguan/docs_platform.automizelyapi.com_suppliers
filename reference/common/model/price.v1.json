@@ -1,6 +1,16 @@
 {
   "title": "price",
   "type": "object",
+  "x-examples": {
+    "example": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  },
+  "x-tags": [
+    "common"
+  ],
+  "description": "price",
   "properties": {
     "unit": {
       "type": "integer",
@@ -14,11 +24,9 @@
       "type": "string"
     }
   },
-  "x-examples": {
-    "example-1": {}
-  },
-  "x-tags": [
-    "common"
-  ],
-  "description": "price"
+  "required": [
+    "unit",
+    "amount",
+    "currency"
+  ]
 }

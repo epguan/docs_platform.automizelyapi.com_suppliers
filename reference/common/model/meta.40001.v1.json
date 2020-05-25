@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "x-examples": {
+    "Example": {
+      "code": 40001,
+      "type": "BadRequest",
+      "message": "The request body is an invalid JSON."
+    }
+  },
+  "title": "meta.40001",
+  "description": "meta.40001 model"
+}

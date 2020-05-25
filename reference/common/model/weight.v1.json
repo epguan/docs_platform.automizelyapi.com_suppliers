@@ -1,9 +1,21 @@
 {
   "title": "weight",
   "type": "object",
+  "x-examples": {
+    "example": {
+      "unit": "kg",
+      "value": 120
+    }
+  },
   "properties": {
     "unit": {
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "kg",
+        "g",
+        "lb",
+        "oz"
+      ]
     },
     "value": {
       "type": "number"
